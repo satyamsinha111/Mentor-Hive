@@ -1,0 +1,102 @@
+<mat-card class="signup-card">
+  <h2>Sign Up</h2>
+
+  <mat-stepper linear>
+    <!-- Step 1: Personal Details -->
+    <mat-step label="Select Role" [stepControl]="roleForm">
+      <form [formGroup]="roleForm">
+       <app-select-role (selectedRole)="getSelectedRole($event)" ></app-select-role>
+        <button mat-raised-button color="primary" matStepperNext>Next</button>
+      </form>
+    </mat-step>
+
+    <mat-step label="Personal Details" [stepControl]="personalForm">
+      <form [formGroup]="personalForm">
+        <app-personal-details  [personalForm]="personalForm" ></app-personal-details>
+        <button mat-raised-button color="primary" matStepperNext>Next</button>
+      </form>
+    </mat-step>
+
+    <mat-step label="Professional Details" [stepControl]="professionalForm">
+      <form [formGroup]="professionalForm">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Years of Experience</mat-label>
+          <input matInput formControlName="experience" appNumericOnly />
+        </mat-form-field>
+
+        <div *ngIf="roleForm.value.role === 'mentor'">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Expertise (Press Enter to Add)</mat-label>
+            <input matInput appTagInput [formArray]="expertiseArray" formControlName="expertise"  />
+          </mat-form-field>
+          <div class="tag-container">
+            <span *ngFor="let tag of professionalForm.get('expertise')?.value" class="tag">
+              {{ tag }} <button (click)="removeTag('expertise', tag)">×</button>
+            </span>
+          </div>
+
+          <h3>Companies Worked At:</h3>
+          <div formArrayName="companies">
+            <div *ngFor="let company of companies.controls; let i = index" [formGroupName]="i" class="company-block">
+              <mat-form-field appearance="outline">
+                <mat-label>Company Name</mat-label>
+                <input matInput formControlName="companyName" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Position</mat-label>
+                <input matInput formControlName="position" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Duration (years)</mat-label>
+                <input matInput formControlName="duration" appNumericOnly />
+              </mat-form-field>
+
+              <button mat-icon-button color="warn" (click)="removeCompany(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <button mat-raised-button color="accent" (click)="addCompany()">+ Add Company</button>
+        </div>
+
+        <div *ngIf="roleForm.value.role === 'mentee'">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Learning Interests</mat-label>
+            <input matInput formControlName="learningInterests" />
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button color="primary" matStepperNext>Next</button>
+      </form>
+    </mat-step>
+
+    <mat-step label="Account Setup" [stepControl]="accountForm">
+      <form [formGroup]="accountForm">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput formControlName="confirmPassword" type="password" />
+        </mat-form-field>
+
+        <div class="button-container">
+          <mat-checkbox formControlName="agreeTerms">I agree to the Terms & Conditions</mat-checkbox>
+
+          <button mat-raised-button color="primary" (click)="onSubmit()">Finish</button>
+        </div>
+
+
+      </form>
+    </mat-step>
+
+  </mat-stepper>
+
+  <p class="login-link">
+    Already have an account? <a [routerLink]="PublicRoutes.Login">Login</a>
+  </p>
+</mat-card>

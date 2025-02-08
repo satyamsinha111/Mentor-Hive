@@ -1,0 +1,19 @@
+<mat-form-field appearance="outline" class="full-width">
+  <mat-label>First Name</mat-label>
+  <input matInput formControlName="firstName" />
+</mat-form-field>
+
+<mat-form-field appearance="outline" class="full-width">
+  <mat-label>Last Name</mat-label>
+  <input matInput formControlName="lastName" />
+</mat-form-field>
+
+<mat-form-field appearance="outline" class="full-width">
+  <mat-label>Contact</mat-label>
+  <input matInput appPhoneNumberFormatter formControlName="contact" type="tel" />
+</mat-form-field>
+
+<mat-form-field appearance="outline" class="full-width">
+  <mat-label>Email</mat-label>
+  <input matInput formControlName="email" type="email" />
+</mat-form-field>

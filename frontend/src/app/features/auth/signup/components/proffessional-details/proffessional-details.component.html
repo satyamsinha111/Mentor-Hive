@@ -1,0 +1,10 @@
+<mat-form-field class="full-width">
+  <mat-label>Years of Experience</mat-label>
+  <input matInput formControlName="experience" type="number" />
+</mat-form-field>
+<div *ngIf="roleForm.value.role === 'mentor'">
+  <mat-form-field class="full-width">
+    <mat-label>Expertise (Press Enter to Add)</mat-label>
+    <input matInput appTagInput formControlName="expertise" placeholder="Add expertise" />
+  </mat-form-field>
+</div>

@@ -1,0 +1,70 @@
+.signup-card {
+  max-width: 62.5rem;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+  form {
+    padding: 24px 24px 24px 24px;
+  }
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;  // ✅ Stack Mentor & Mentee vertically
+  gap: 10px; // ✅ Add spacing between radio buttons
+  margin-bottom: 20px; // ✅ Add spacing before "Next" button
+}
+
+.next-btn {
+  margin-top: 10px; // ✅ Add spacing between radio buttons and "Next"
+}
+
+
+
+.full-width {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.company-block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f9f9f9;
+  margin-bottom: 1rem;
+}
+
+.company-block mat-form-field {
+  flex: 1 1 30%;
+  min-width: 200px;
+}
+button {
+  margin-top: 1rem;
+}
+
+.login-link {
+  margin-top: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.add-company-button {
+  margin-right: auto;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+
+

@@ -1,0 +1,7 @@
+<mat-label>Are you signing up as a:</mat-label>
+<div class="radio-group">
+  <mat-radio-group formControlName="role" (change)="onRoleChange($event)">
+    <mat-radio-button value="mentor">Mentor</mat-radio-button>
+    <mat-radio-button value="mentee">Mentee</mat-radio-button>
+  </mat-radio-group>
+</div>
