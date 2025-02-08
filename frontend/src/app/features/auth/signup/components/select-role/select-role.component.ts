@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatLabel } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
+import { Role } from '../../../../../shared/enums/common.enum';
+
 
 @Component({
   selector: 'app-select-role',
@@ -10,9 +12,10 @@ import { MatRadioModule } from '@angular/material/radio';
 })
 export class SelectRoleComponent {
   @Output() selectedRole: EventEmitter<string> = new EventEmitter<string>();
+  protected readonly Mentor:string = Role.Mentor;
+  protected readonly Mentee:string = Role.Mentee;
 
   onRoleChange(event: any) {
-    console.log(event.value,event);
     this.selectedRole.emit(event.value);
   }
 }

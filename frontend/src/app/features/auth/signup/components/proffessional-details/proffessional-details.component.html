@@ -1,10 +1,50 @@
-<mat-form-field class="full-width">
+<mat-form-field appearance="outline" class="full-width">
   <mat-label>Years of Experience</mat-label>
-  <input matInput formControlName="experience" type="number" />
+  <input matInput formControlName="experience" appNumericOnly />
 </mat-form-field>
-<div *ngIf="roleForm.value.role === 'mentor'">
-  <mat-form-field class="full-width">
+
+<div *ngIf="role === Mentor">
+  <mat-form-field appearance="outline" class="full-width">
     <mat-label>Expertise (Press Enter to Add)</mat-label>
-    <input matInput appTagInput formControlName="expertise" placeholder="Add expertise" />
+    <input matInput appTagInput [formArray]="expertiseArray" formControlName="expertise"  />
+
+  </mat-form-field>
+  <div class="tag-container">
+    <span *ngFor="let tag of professionalForm?.get('expertise')?.value" class="tag">
+      {{ tag }} <button (click)="removeTag('expertise', tag)">×</button>
+    </span>
+  </div>
+
+  <h3>Companies Worked At:</h3>
+  <div formArrayName="companies">
+    <div *ngFor="let company of companies.controls; let i = index" [formGroupName]="i" class="company-block">
+      <mat-form-field appearance="outline">
+        <mat-label>Company Name</mat-label>
+        <input matInput formControlName="companyName" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Position</mat-label>
+        <input matInput formControlName="position" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Duration (years)</mat-label>
+        <input matInput formControlName="duration" appNumericOnly />
+      </mat-form-field>
+
+      <button mat-icon-button color="warn" (click)="removeCompany(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+  <button mat-raised-button color="accent" (click)="addCompany()">+ Add Company</button>
+</div>
+
+<div *ngIf="role === Mentee">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Learning Interests</mat-label>
+    <input matInput formControlName="learningInterests" />
+
   </mat-form-field>
 </div>

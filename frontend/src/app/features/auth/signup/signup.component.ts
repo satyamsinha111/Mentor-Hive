@@ -16,16 +16,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
 import { CdkStepper, CdkStepperModule } from '@angular/cdk/stepper';
 import { PublicRoutes } from '../../../shared/enums/routes.enum';
-import { TagInputDirective } from '../../../shared/directives/tag-input.directive';
 import { SelectRoleComponent } from './components/select-role/select-role.component';
 import { PersonalDetailsComponent } from './components/personal-details/personal-details.component';
-
-
-
-
-
-
-
 
 @Component({
   selector: 'app-signup',
@@ -45,8 +37,7 @@ import { PersonalDetailsComponent } from './components/personal-details/personal
     MatIconModule,
     CdkStepperModule,
 
-    NumericOnlyDirective,
-    TagInputDirective,
+
     SelectRoleComponent,
     PersonalDetailsComponent
   ],
@@ -114,12 +105,7 @@ export class SignupComponent {
   removeCompany(index: number) {
     this.companies.removeAt(index);
   }
-  removeTag(controlName: string, tag: string) {
-    const control = this.professionalForm.get(controlName);
-    if (control) {
-      control.setValue(control.value.filter((t: string) => t !== tag));
-    }
-  }
+
   onSubmit() {
     if (
       this.roleForm.valid &&
