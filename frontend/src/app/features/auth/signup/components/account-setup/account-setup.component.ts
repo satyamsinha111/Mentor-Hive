@@ -17,8 +17,7 @@ import { Output, EventEmitter } from '@angular/core';
     MatCheckboxModule,
     MatButtonModule,
   ],
-  templateUrl: './account-setup.component.html',
-  styleUrl: './account-setup.component.scss',
+  templateUrl: './account-setup.component.html'
 })
 export class AccountSetupComponent {
   @Input() accountForm!: FormGroup;

@@ -18,8 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     MatButtonModule,
   ],
-  templateUrl: './personal-details.component.html',
-  styleUrl: './personal-details.component.scss',
+  templateUrl: './personal-details.component.html'
 })
 export class PersonalDetailsComponent {
   @Input() personalForm!: FormGroup;

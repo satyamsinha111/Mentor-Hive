@@ -10,7 +10,7 @@ import { Role } from '../../../../../shared/enums/common.enum';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatStepper, MatStepperModule } from '@angular/material/stepper';
+import {  MatStepperModule } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-professional-details',
@@ -30,8 +30,7 @@ import { MatStepper, MatStepperModule } from '@angular/material/stepper';
     ReactiveFormsModule,
     MatStepperModule,
   ],
-  templateUrl: './proffessional-details.component.html',
-  styleUrl: './proffessional-details.component.scss',
+  templateUrl: './proffessional-details.component.html'
 })
 export class ProffessionalDetailsComponent {
   @Input() professionalForm!: FormGroup;
