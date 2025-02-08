@@ -18,6 +18,9 @@ import { CdkStepper, CdkStepperModule } from '@angular/cdk/stepper';
 import { PublicRoutes } from '../../../shared/enums/routes.enum';
 import { SelectRoleComponent } from './components/select-role/select-role.component';
 import { PersonalDetailsComponent } from './components/personal-details/personal-details.component';
+import { ProffessionalDetailsComponent } from './components/proffessional-details/proffessional-details.component';
+import { Role } from '../../../shared/enums/common.enum';
+import { AccountSetupComponent } from './components/account-setup/account-setup.component';
 
 @Component({
   selector: 'app-signup',
@@ -36,12 +39,12 @@ import { PersonalDetailsComponent } from './components/personal-details/personal
     MatRadioModule,
     MatIconModule,
     CdkStepperModule,
-
-
+    ProffessionalDetailsComponent,
     SelectRoleComponent,
-    PersonalDetailsComponent
+    PersonalDetailsComponent,
+    AccountSetupComponent,
   ],
-  providers: [{ provide: CdkStepper, useClass: CdkStepper },],
+  providers: [{ provide: CdkStepper, useClass: CdkStepper }],
 
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
@@ -51,10 +54,13 @@ export class SignupComponent {
   protected personalForm: FormGroup;
   protected professionalForm: FormGroup;
   protected accountForm: FormGroup;
-  protected selectedRole: string = '';
+  protected selectedRole?: Role;
   protected PublicRoutes = PublicRoutes;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+  ) {
     this.roleForm = this.fb.group({
       role: ['', Validators.required],
     });
@@ -62,14 +68,17 @@ export class SignupComponent {
     this.personalForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      contact: ['', [Validators.required, Validators.pattern(/^(\(\d{3}\) \d{3}-\d{4})$/)]],
+      contact: [
+        '',
+        [Validators.required, Validators.pattern(/^(\(\d{3}\) \d{3}-\d{4})$/)],
+      ],
       email: ['', [Validators.required, Validators.email]],
     });
 
     this.professionalForm = this.fb.group({
       experience: ['', Validators.required],
       expertise: this.fb.array([]), // Only for mentors
-      learningInterests:  this.fb.array([]), // Only for mentees
+      learningInterests: this.fb.array([]), // Only for mentees
       companies: this.fb.array([]),
     });
 
@@ -80,7 +89,7 @@ export class SignupComponent {
     });
   }
 
-  getSelectedRole(role: string) {
+  getSelectedRole(role: Role) {
     this.selectedRole = role;
     this.roleForm.setValue({ role });
   }

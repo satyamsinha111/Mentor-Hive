@@ -1,0 +1,7 @@
+.radio-group {
+  display: flex;
+  flex-direction: row; // ✅ Stack Mentor & Mentee vertically
+  gap: 10px; // ✅ Add spacing between radio buttons
+  margin-bottom: 20px; // ✅ Add spacing before "Next" button
+  justify-content: center;
+}

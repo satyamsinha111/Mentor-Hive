@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router,RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -9,7 +9,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PublicRoutes } from '../../../shared/enums/routes.enum';
-
 
 @Component({
   selector: 'app-login',
@@ -22,7 +21,7 @@ import { PublicRoutes } from '../../../shared/enums/routes.enum';
     MatButtonModule,
     MatSelectModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
@@ -31,7 +30,10 @@ export class LoginComponent {
   protected loginForm: FormGroup;
   protected PublicRoutes = PublicRoutes;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+  ) {
     this.loginForm = this.fb.group({
       role: ['', Validators.required], // Mentor or Mentee
       email: ['', [Validators.required, Validators.email]],

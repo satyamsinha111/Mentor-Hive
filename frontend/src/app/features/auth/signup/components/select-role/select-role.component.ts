@@ -1,21 +1,44 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { MatLabel } from '@angular/material/form-field';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { Role } from '../../../../../shared/enums/common.enum';
-
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatStepperModule } from '@angular/material/stepper';
+import { CdkStepperModule } from '@angular/cdk/stepper';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-select-role',
-  imports: [MatLabel, MatRadioModule],
+  standalone: true,
+  imports: [
+    MatRadioModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    CdkStepperModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+
+  ],
   templateUrl: './select-role.component.html',
-  styleUrl: './select-role.component.scss'
+  styleUrl: './select-role.component.scss',
 })
 export class SelectRoleComponent {
-  @Output() selectedRole: EventEmitter<string> = new EventEmitter<string>();
-  protected readonly Mentor:string = Role.Mentor;
-  protected readonly Mentee:string = Role.Mentee;
+  @Input() roleForm!: FormGroup;
+  @Output() selectedRole: EventEmitter<Role> = new EventEmitter<Role>();
 
-  onRoleChange(event: any) {
-    this.selectedRole.emit(event.value);
+  ngOnInit() {
+    console.log('roleForm', this.roleForm);
+    if(this.roleForm){
+      this.roleForm.get('role')?.valueChanges.pipe(take(1)).subscribe((newRole: Role) => {
+        this.selectedRole.emit(newRole);
+      });
+
+    }
   }
+
+  protected readonly Mentor: string = Role.Mentor;
+  protected readonly Mentee: string = Role.Mentee;
 }

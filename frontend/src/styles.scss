@@ -1,9 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 .tag-container {
   margin-top: 10px;
   display: flex;
@@ -26,4 +31,35 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   cursor: pointer;
   margin-left: 5px;
   font-weight: bold;
+}
+
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px; // Adds spacing between form fields
+  max-width: 600px;
+  margin: auto;
+  padding: 16px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.full-width {
+  width: 100%;
+}
+
+.form-actions {
+  grid-column: span 2; // Makes button take full width in two-column layout
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+form {
+  padding: 24px 24px 24px 24px;
 }

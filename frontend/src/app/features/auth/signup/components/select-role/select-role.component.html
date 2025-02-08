@@ -1,7 +1,7 @@
-<mat-label>Are you signing up as a:</mat-label>
-<div class="radio-group">
-  <mat-radio-group formControlName="role" (change)="onRoleChange($event)">
+<form  [formGroup]="roleForm">
+  <mat-radio-group [formControlName]="'role'" class="radio-group">
     <mat-radio-button [value]="Mentor">Mentor</mat-radio-button>
     <mat-radio-button [value]="Mentee">Mentee</mat-radio-button>
   </mat-radio-group>
-</div>
+  <button mat-raised-button color="primary" matStepperNext>Next</button>
+</form>

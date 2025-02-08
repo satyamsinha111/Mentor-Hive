@@ -3,23 +3,11 @@
   margin: 50px auto;
   padding: 20px;
   text-align: center;
-  form {
-    padding: 24px 24px 24px 24px;
-  }
-}
-
-.radio-group {
-  display: flex;
-  flex-direction: column;  // ✅ Stack Mentor & Mentee vertically
-  gap: 10px; // ✅ Add spacing between radio buttons
-  margin-bottom: 20px; // ✅ Add spacing before "Next" button
 }
 
 .next-btn {
   margin-top: 10px; // ✅ Add spacing between radio buttons and "Next"
 }
-
-
 
 .full-width {
   width: 100%;
@@ -59,12 +47,3 @@ button {
 .add-company-button {
   margin-right: auto;
 }
-
-.button-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-}
-
-
-

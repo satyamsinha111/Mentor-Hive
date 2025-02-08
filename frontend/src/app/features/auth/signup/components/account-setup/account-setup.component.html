@@ -1,13 +1,19 @@
-<mat-form-field class="full-width">
-  <mat-label>Password</mat-label>
-  <input matInput formControlName="password" type="password" />
-</mat-form-field>
+<form [formGroup]="accountForm">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password" type="password" />
+  </mat-form-field>
 
-<mat-form-field class="full-width">
-  <mat-label>Confirm Password</mat-label>
-  <input matInput formControlName="confirmPassword" type="password" />
-</mat-form-field>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Confirm Password</mat-label>
+    <input matInput formControlName="confirmPassword" type="password" />
+  </mat-form-field>
 
-<mat-checkbox formControlName="agreeTerms">
-  I agree to the Terms & Conditions
-</mat-checkbox>
+  <div class="button-container">
+    <mat-checkbox formControlName="agreeTerms">I agree to the Terms & Conditions</mat-checkbox>
+
+    <button mat-raised-button color="primary" (click)="onSubmit()">
+      Finish
+    </button>
+  </div>
+</form>

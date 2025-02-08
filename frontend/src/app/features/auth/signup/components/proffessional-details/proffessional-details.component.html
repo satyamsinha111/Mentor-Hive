@@ -1,50 +1,64 @@
-<mat-form-field appearance="outline" class="full-width">
-  <mat-label>Years of Experience</mat-label>
-  <input matInput formControlName="experience" appNumericOnly />
-</mat-form-field>
-
-<div *ngIf="role === Mentor">
+<form [formGroup]="professionalForm" class="form-container">
   <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Expertise (Press Enter to Add)</mat-label>
-    <input matInput appTagInput [formArray]="expertiseArray" formControlName="expertise"  />
-
+    <mat-label>Years of Experience</mat-label>
+    <input matInput formControlName="experience" appNumericOnly />
   </mat-form-field>
-  <div class="tag-container">
-    <span *ngFor="let tag of professionalForm?.get('expertise')?.value" class="tag">
-      {{ tag }} <button (click)="removeTag('expertise', tag)">×</button>
-    </span>
-  </div>
 
-  <h3>Companies Worked At:</h3>
-  <div formArrayName="companies">
-    <div *ngFor="let company of companies.controls; let i = index" [formGroupName]="i" class="company-block">
-      <mat-form-field appearance="outline">
-        <mat-label>Company Name</mat-label>
-        <input matInput formControlName="companyName" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Position</mat-label>
-        <input matInput formControlName="position" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Duration (years)</mat-label>
-        <input matInput formControlName="duration" appNumericOnly />
-      </mat-form-field>
-
-      <button mat-icon-button color="warn" (click)="removeCompany(i)">
-        <mat-icon>delete</mat-icon>
-      </button>
+  <div *ngIf="role === 'mentor'">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Expertise (Press Enter to Add)</mat-label>
+      <input
+        matInput
+        appTagInput
+        [formArray]="expertiseArray"
+        formControlName="expertise"
+      />
+    </mat-form-field>
+    <div class="tag-container">
+      <span
+        *ngFor="let tag of professionalForm?.get('expertise')?.value"
+        class="tag"
+      >
+        {{ tag }} <button (click)="removeTag('expertise', tag)">×</button>
+      </span>
     </div>
+
+    <h3>Companies Worked At:</h3>
+    <div formArrayName="companies">
+      <div
+        *ngFor="let company of companies.controls; let i = index"
+        [formGroupName]="i"
+        class="company-block"
+      >
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Company Name</mat-label>
+          <input matInput formControlName="companyName" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Position</mat-label>
+          <input matInput formControlName="position" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Duration (years)</mat-label>
+          <input matInput formControlName="duration" appNumericOnly />
+        </mat-form-field>
+
+        <button mat-icon-button color="warn" (click)="removeCompany(i)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+    <button mat-raised-button color="accent" (click)="addCompany()">
+      + Add Company
+    </button>
   </div>
-  <button mat-raised-button color="accent" (click)="addCompany()">+ Add Company</button>
-</div>
-
-<div *ngIf="role === Mentee">
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Learning Interests</mat-label>
-    <input matInput formControlName="learningInterests" />
-
-  </mat-form-field>
-</div>
+  <div *ngIf="role === 'mentee'">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Learning Interests</mat-label>
+      <input matInput formControlName="learningInterests" />
+    </mat-form-field>
+  </div>
+  <button mat-raised-button color="primary" matStepperNext>Next</button>
+</form>

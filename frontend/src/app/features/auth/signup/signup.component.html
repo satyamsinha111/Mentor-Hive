@@ -1,54 +1,30 @@
 <mat-card class="signup-card">
-  <h2>Sign Up</h2>
-
+  <h2>Get Started</h2>
   <mat-stepper linear>
-    <!-- Step 1: Personal Details -->
-    <mat-step label="Select Role" [stepControl]="roleForm">
-      <form [formGroup]="roleForm">
-       <app-select-role (selectedRole)="getSelectedRole($event)" ></app-select-role>
-        <button mat-raised-button color="primary" matStepperNext>Next</button>
-      </form>
-    </mat-step>
-
+    <mat-step label="Select Role" [stepControl]="roleForm"
+      ><app-select-role
+        [roleForm]="roleForm"
+        (selectedRole)="getSelectedRole($event)"
+      ></app-select-role
+    ></mat-step>
     <mat-step label="Personal Details" [stepControl]="personalForm">
-      <form [formGroup]="personalForm">
-        <app-personal-details  [personalForm]="personalForm" ></app-personal-details>
-        <button mat-raised-button color="primary" matStepperNext>Next</button>
-      </form>
+      <app-personal-details
+        [personalForm]="personalForm"
+      ></app-personal-details>
     </mat-step>
-
     <mat-step label="Professional Details" [stepControl]="professionalForm">
-      <form [formGroup]="professionalForm">
-
-
-        <button mat-raised-button color="primary" matStepperNext>Next</button>
-      </form>
+      <app-professional-details
+        [professionalForm]="professionalForm"
+        [role]="selectedRole"
+      ></app-professional-details>
     </mat-step>
-
     <mat-step label="Account Setup" [stepControl]="accountForm">
-      <form [formGroup]="accountForm">
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Password</mat-label>
-          <input matInput formControlName="password" type="password" />
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Confirm Password</mat-label>
-          <input matInput formControlName="confirmPassword" type="password" />
-        </mat-form-field>
-
-        <div class="button-container">
-          <mat-checkbox formControlName="agreeTerms">I agree to the Terms & Conditions</mat-checkbox>
-
-          <button mat-raised-button color="primary" (click)="onSubmit()">Finish</button>
-        </div>
-
-
-      </form>
+      <app-account-setup
+        [accountForm]="accountForm"
+        (submitClick)="onSubmit()"
+      ></app-account-setup>
     </mat-step>
-
   </mat-stepper>
-
   <p class="login-link">
     Already have an account? <a [routerLink]="PublicRoutes.Login">Login</a>
   </p>

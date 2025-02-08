@@ -9,8 +9,8 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Role } from '../../../../../shared/enums/common.enum';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-professional-details',
@@ -28,17 +28,21 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatLabel,
     MatIconModule,
     ReactiveFormsModule,
+    MatStepperModule,
   ],
   templateUrl: './proffessional-details.component.html',
   styleUrl: './proffessional-details.component.scss',
 })
 export class ProffessionalDetailsComponent {
-  @Input() professionalForm?: FormGroup;
+  @Input() professionalForm!: FormGroup;
   @Input() role?: Role;
-  protected readonly Mentor:string = Role.Mentor;
-  protected readonly Mentee:string = Role.Mentee;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  protected readonly Mentor: string = Role.Mentor;
+  protected readonly Mentee: string = Role.Mentee;
+
+  constructor(private fb: FormBuilder) {
+    console.log('ProfessionalDetailsComponent', this.professionalForm);
+  }
 
   removeTag(controlName: string, tag: string) {
     const control = this.professionalForm?.get(controlName);
@@ -66,6 +70,4 @@ export class ProffessionalDetailsComponent {
   removeCompany(index: number) {
     this.companies.removeAt(index);
   }
-
-
 }
