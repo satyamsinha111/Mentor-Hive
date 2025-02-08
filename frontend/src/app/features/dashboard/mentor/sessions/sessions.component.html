@@ -1,0 +1,19 @@
+<div class="page-container">
+  <h2>My Sessions</h2>
+
+  <div class="session-grid">
+    <mat-card *ngFor="let session of sessions" class="session-card">
+      <mat-card-header>
+        <mat-card-title>{{ session.mentee }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p><strong>Topic:</strong> {{ session.topic }}</p>
+        <p><strong>Date:</strong> {{ session.date }}</p>
+      </mat-card-content>
+      <mat-card-actions class="actions">
+        <button mat-raised-button color="warn">Cancel</button>
+        <button mat-raised-button color="primary">Reschedule</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

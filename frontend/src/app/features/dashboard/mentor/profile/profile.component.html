@@ -1,0 +1,49 @@
+<div class="profile-container">
+  <h2>Mentor Profile</h2>
+
+  <div class="profile-card">
+    <div class="profile-header">
+      <img [src]="mentor.avatar" alt="Mentor Avatar" class="avatar">
+      <div class="mentor-info">
+        <h3>{{ mentor.name }}</h3>
+        <p class="mentor-role">{{ mentor.role }}</p>
+      </div>
+    </div>
+
+    <div class="profile-content">
+      <mat-card class="about-card">
+        <mat-card-title>About Me</mat-card-title>
+        <mat-card-content>
+          <p>{{ mentor.about }}</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="info-card">
+        <mat-card-title>Skills</mat-card-title>
+        <mat-card-content class="skills-container">
+          <mat-chip-set>
+            <mat-chip *ngFor="let skill of mentor.skills" color="primary" selected>
+              {{ skill }}
+            </mat-chip>
+          </mat-chip-set>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="info-card">
+        <mat-card-title>Contact Info</mat-card-title>
+        <mat-card-content class="contact-info">
+          <p><mat-icon>email</mat-icon> {{ mentor.email }}</p>
+          <p><mat-icon>phone</mat-icon> {{ mentor.phone }}</p>
+          <p><mat-icon>location_on</mat-icon> {{ mentor.location }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="edit-profile">
+      <button mat-raised-button color="primary" routerLink="/dashboard/mentor/profile/edit">Edit Profile</button>
+      <button mat-raised-button color="warn" routerLink="/">Logout</button>
+
+
+    </div>
+  </div>
+</div>

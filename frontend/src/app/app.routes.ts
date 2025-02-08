@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
-import { PublicRoutes } from './shared/enums/routes.enum';
+import {  PublicRoutes } from './shared/enums/routes.enum';
+import { MentorDashboardRoutes } from './features/dashboard/mentor/mentor.routes';
 
 export const routes: Routes = [
   {
@@ -16,5 +17,8 @@ export const routes: Routes = [
         (m) => m.SignupComponent,
       ),
   },
+  { path: 'dashboard', children: MentorDashboardRoutes },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+
+
 ];

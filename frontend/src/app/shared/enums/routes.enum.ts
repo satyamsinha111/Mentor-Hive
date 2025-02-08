@@ -1,5 +1,10 @@
-export const PublicRoutes = { Login: '/login', Signup: '/signup' };
-export const ProtectedRoutes = {
-  MentorDashboard: 'mentor-dashboard',
-  MenteeDashboard: 'mentee-dashboard',
-};
+export enum PublicRoutes {
+  Login = '/login',
+  Signup = '/signup',
+}
+
+export enum ProtectedRoutes {
+  MentorDashboard = '/dashboard/mentor/:id',
+  MenteeDashboard = '/dashboard/mentee/:id'
+}
+

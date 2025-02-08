@@ -1,0 +1,64 @@
+<div class="edit-profile-container">
+  <h2>Edit Profile</h2>
+
+  <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+    <!-- Profile Picture Upload -->
+    <div class="profile-pic-section">
+      <label for="fileInput">
+        <img [src]="editProfileForm.value.avatar" alt="Profile Avatar" class="avatar">
+      </label>
+      <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden>
+      <p class="upload-text">Click on the image to change</p>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label>Full Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Role</mat-label>
+        <input matInput formControlName="role">
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>About Me</mat-label>
+      <textarea matInput rows="3" formControlName="about"></textarea>
+    </mat-form-field>
+
+    <!-- Skills -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Skills (comma separated)</mat-label>
+      <input matInput formControlName="skills" placeholder="e.g. Angular, Node.js, React">
+    </mat-form-field>
+
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Phone</mat-label>
+        <input matInput type="tel" formControlName="phone">
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Location</mat-label>
+      <input matInput formControlName="location">
+    </mat-form-field>
+
+    <!-- Buttons -->
+    <div class="button-group">
+      <button mat-raised-button color="primary" type="submit" [disabled]="editProfileForm.invalid">
+        Save Changes
+      </button>
+      <button mat-stroked-button color="warn" type="button" (click)="cancelEdit()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

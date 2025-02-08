@@ -8,7 +8,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PublicRoutes } from '../../../shared/enums/routes.enum';
+import { ProtectedRoutes, PublicRoutes } from '../../../shared/enums/routes.enum';
+import { MentorHiveConstants, Role } from '../../../shared/enums/common.enum';
 
 @Component({
   selector: 'app-login',
@@ -47,10 +48,10 @@ export class LoginComponent {
       console.log('Login Data:', { role, email, password });
 
       // Simulating role-based navigation
-      if (role === 'mentor') {
-        this.router.navigate(['/mentor-dashboard']);
+      if (role === Role.Mentor) {
+        this.router.navigate([MentorHiveConstants.MentorDashboard,Role.Mentor,MentorHiveConstants.MentorSessions]);
       } else {
-        this.router.navigate(['/mentee-dashboard']);
+        this.router.navigate([MentorHiveConstants.MentorDashboard,Role.Mentee,1]);
       }
     }
   }

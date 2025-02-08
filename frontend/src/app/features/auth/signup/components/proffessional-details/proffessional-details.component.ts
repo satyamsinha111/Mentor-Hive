@@ -40,7 +40,7 @@ export class ProffessionalDetailsComponent {
   protected readonly Mentee: string = Role.Mentee;
 
   constructor(private fb: FormBuilder) {
-    console.log('ProfessionalDetailsComponent', this.professionalForm);
+
   }
 
   removeTag(controlName: string, tag: string) {
