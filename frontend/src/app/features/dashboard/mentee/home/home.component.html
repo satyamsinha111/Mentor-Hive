@@ -1,0 +1,28 @@
+<div class="mentee-home">
+  <h2>Welcome, [Mentee Name]!</h2>
+
+  <!-- Upcoming Sessions -->
+  <section class="card">
+    <h3>Upcoming Sessions</h3>
+    <div *ngIf="sessions.length > 0; else noSessions">
+      <div *ngFor="let session of sessions" class="session-card">
+        <p><strong>Mentor:</strong> {{ session.mentor }}</p>
+        <p><strong>Date:</strong> {{ session.date | date }}</p>
+        <p><strong>Time:</strong> {{ session.time }}</p>
+        <button mat-button color="warn">Cancel</button>
+      </div>
+    </div>
+    <ng-template #noSessions>
+      <p>No upcoming sessions.</p>
+    </ng-template>
+  </section>
+
+  <!-- Recommended Mentors -->
+  <section class="card">
+    <h3>Recommended Mentors</h3>
+    <div *ngFor="let mentor of recommendedMentors" class="mentor-card">
+      <p><strong>{{ mentor.name }}</strong> ({{ mentor.expertise }})</p>
+      <button mat-raised-button color="primary" (click)="viewMentorProfile(mentor)">View Profile</button>
+    </div>
+  </section>
+</div>

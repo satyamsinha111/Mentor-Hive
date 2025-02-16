@@ -1,0 +1,33 @@
+<div class="sessions">
+  <h2>My Sessions</h2>
+
+  <mat-tab-group>
+    <mat-tab label="Upcoming">
+      <div *ngIf="upcomingSessions.length > 0; else noSessions">
+        <div *ngFor="let session of upcomingSessions" class="session-card">
+          <p><strong>Mentor:</strong> {{ session.mentor }}</p>
+          <p><strong>Date:</strong> {{ session.date | date }}</p>
+          <p><strong>Time:</strong> {{ session.time }}</p>
+          <div class="actions">
+            <button mat-button color="warn">Cancel</button>
+            <button mat-button color="accent">Reschedule</button>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Completed">
+      <div *ngIf="completedSessions.length > 0; else noSessions">
+        <div *ngFor="let session of completedSessions" class="session-card completed">
+          <p><strong>Mentor:</strong> {{ session.mentor }}</p>
+          <p><strong>Date:</strong> {{ session.date | date }}</p>
+          <p><strong>Feedback:</strong> ⭐⭐⭐⭐☆</p>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+  <ng-template #noSessions>
+    <p class="no-sessions">No sessions available.</p>
+  </ng-template>
+</div>

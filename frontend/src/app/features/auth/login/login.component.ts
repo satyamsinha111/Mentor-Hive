@@ -49,9 +49,9 @@ export class LoginComponent {
 
       // Simulating role-based navigation
       if (role === Role.Mentor) {
-        this.router.navigate([MentorHiveConstants.MentorDashboard,Role.Mentor,MentorHiveConstants.MentorSessions]);
+        this.router.navigate(['mentor/dashboard/sessions']);
       } else {
-        this.router.navigate([MentorHiveConstants.MentorDashboard,Role.Mentee,1]);
+        this.router.navigate(['mentee/dashboard/home']);
       }
     }
   }

@@ -9,7 +9,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 export const MentorDashboardRoutes: Routes = [
   {
-    path: 'mentor',
+    path: 'dashboard',
     component: MentorComponent,
     children: [
       { path: '', redirectTo: 'sessions', pathMatch: 'full' },

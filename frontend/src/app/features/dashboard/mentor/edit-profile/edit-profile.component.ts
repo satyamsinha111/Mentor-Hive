@@ -4,6 +4,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-edit-profile',
@@ -21,7 +23,7 @@ import { CommonModule } from '@angular/common';
 export class EditProfileComponent {
   editProfileForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private router: Router) {
     this.editProfileForm = this.fb.group({
       avatar: ['https://randomuser.me/api/portraits/men/10.jpg'],
       name: ['John Doe', Validators.required],
@@ -53,6 +55,6 @@ export class EditProfileComponent {
   }
 
   cancelEdit() {
-    alert('Edit canceled!');
+    this.router.navigate(['/mentor/dashboard/profile']);
   }
 }

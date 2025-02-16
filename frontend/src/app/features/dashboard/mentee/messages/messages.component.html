@@ -1,0 +1,37 @@
+<div class="messages">
+  <h2>Messages</h2>
+  <div class="chat-container">
+    <!-- Sidebar -->
+    <aside class="chat-sidebar">
+      <h3>Chats</h3>
+      <div *ngFor="let mentor of mentors"
+           (click)="selectMentor(mentor)"
+           [class.active]="mentor === selectedMentor">
+        <img [src]="mentor.image" alt="mentor" />
+        <p>{{ mentor.name }}</p>
+      </div>
+    </aside>
+
+    <!-- Chat Window -->
+    <section class="chat-window" *ngIf="selectedMentor">
+      <div class="chat-header">
+        <img [src]="selectedMentor.image" alt="mentor" />
+        <h3>{{ selectedMentor.name }}</h3>
+      </div>
+
+      <div class="chat-box">
+        <div *ngFor="let msg of messages[selectedMentor.name]"
+             [class.self]="msg.sender === 'me'">
+          <p>{{ msg.text }}</p>
+        </div>
+      </div>
+
+      <div class="chat-input">
+        <input [(ngModel)]="newMessage" placeholder="Type a message..." />
+        <button (click)="sendMessage()">
+          <mat-icon>send</mat-icon>
+        </button>
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="edit-profile">
+  <h2>Edit Profile</h2>
+
+  <div class="profile-card">
+    <!-- Profile Picture Upload -->
+    <div class="profile-picture">
+      <img [src]="profileImage" alt="Profile Picture" />
+      <label for="fileInput" class="upload-btn">Change Photo</label>
+      <input type="file" id="fileInput" (change)="onFileSelected($event)" />
+    </div>
+
+    <!-- Profile Form -->
+    <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+      <mat-form-field appearance="outline">
+        <mat-label>Full Name</mat-label>
+        <input matInput formControlName="fullName" placeholder="John Doe" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" placeholder="john@example.com" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Phone Number</mat-label>
+        <input matInput formControlName="phone" type="tel" placeholder="+1234567890" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Interests</mat-label>
+        <input matInput formControlName="interests" placeholder="Web Development, AI" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Save Changes</button>
+    </form>
+  </div>
+</div>

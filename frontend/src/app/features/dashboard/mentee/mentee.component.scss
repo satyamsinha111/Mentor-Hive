@@ -1,34 +1,39 @@
-.sidenav-container {
-  height: 100vh;
-}
-
-mat-sidenav {
-  width: 250px;
-  background-color: #f8f9fa;
-}
-
-mat-toolbar {
-  padding: 10px;
-}
-
-.content {
-  padding: 20px;
-}
-
-.welcome-card {
-  padding: 15px;
-  margin-bottom: 20px;
-  background: #e3f2fd;
-}
-
-.mentor-list {
+.mentee-dashboard {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
+  min-height: 100vh;
 
-.mentor-card {
-  width: 300px;
-  padding: 15px;
-  background: #f5f5f5;
+  .sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+
+  nav a:hover,
+  .active-link {
+    background: #1abc9c;
+  }
+
+  mat-icon {
+    margin-right: 10px;
+  }
+
+  .content {
+    flex: 1;
+    padding: 20px;
+    background: #f4f6f8;
+  }
 }

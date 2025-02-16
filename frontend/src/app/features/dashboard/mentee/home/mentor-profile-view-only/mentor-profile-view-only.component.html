@@ -1,0 +1,35 @@
+<div class="mentor-profile">
+  <div class="profile-card">
+    <!-- Mentor Image -->
+    <div class="profile-picture">
+      <img [src]="mentorImage" alt="Mentor Picture" />
+    </div>
+
+    <!-- Mentor Details -->
+    <div class="profile-info">
+      <h2>{{ mentor.name }}</h2>
+      <p class="mentor-title">{{ mentor.title }}</p>
+      <p class="mentor-bio">{{ mentor.bio }}</p>
+
+      <!-- Contact & Book Session -->
+      <div class="actions">
+        <button mat-raised-button color="primary" (click)="navigateToMessages()">Message</button>
+        <button mat-raised-button color="accent" (click)="navigateToBookSession()">Book a Session</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional Details -->
+  <div class="details-section">
+    <h3>About {{ mentor.name }}</h3>
+    <p>{{ mentor.about }}</p>
+
+    <h3>Specializations</h3>
+    <ul>
+      <li *ngFor="let skill of mentor.skills">{{ skill }}</li>
+    </ul>
+
+    <h3>Experience</h3>
+    <p>{{ mentor.experience }} years of experience in {{ mentor.expertise }}</p>
+  </div>
+</div>

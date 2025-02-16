@@ -1,0 +1,15 @@
+<div class="find-mentors">
+  <h2>Find a Mentor</h2>
+
+  <mat-form-field>
+    <mat-label>Search by skill</mat-label>
+    <input matInput [(ngModel)]="searchQuery" placeholder="e.g. React, Machine Learning">
+  </mat-form-field>
+
+  <div class="mentor-list">
+    <div *ngFor="let mentor of mentors | filter: searchQuery" class="mentor-card">
+      <p><strong>{{ mentor.name }}</strong> ({{ mentor.expertise }})</p>
+      <button mat-raised-button color="primary">Book Session</button>
+    </div>
+  </div>
+</div>
